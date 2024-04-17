@@ -149,8 +149,8 @@
 }
 
 @keyframes noteAnimate {
-    from {left: -735px;}
-    to {left: 735px;}
+    from {left: 735px;}
+    to {left: -735px;}
 }
 
 /*** Topbar End ***/
@@ -224,7 +224,8 @@
 /*** Features Start ***/
 .features {
     width: 100%;
-    background: linear-gradient(rgba(26, 125, 255, 0.5), rgba(255, 255, 255, 0.3)), url(../img/features-background.jpg);
+    /* background: linear-gradient(rgba(26, 125, 255, 0.5), rgba(255, 255, 255, 0.3)), url(../img/features-background.jpg); */
+    background: linear-gradient(120deg, rgba(187, 32, 32, 0.295), rgba(221, 7, 7, 0.856)), url(https://png.pngtree.com/thumb_back/fh260/background/20220926/pngtree-download-wallpapers-red-abstract-background-lines-wallpaper-image_1465946.jpg);
     background-position: center center;
     background-repeat: no-repeat;
     background-size: cover;
