@@ -1,3 +1,80 @@
 .white{
     color: white!important;
 }
+
+
+
+
+
+
+
+
+
+@import url(https://fonts.googleapis.com/css?family=Open+Sans:600);
+
+body {
+	background-color: #f1f1f1;
+	color: black;
+	font-family: 'Open Sans', sans-serif;
+}
+
+.title {
+	letter-spacing: 1.2em;
+}
+
+
+.horoIcon {
+	height: 120px;
+	width: 120px;
+	margin: 5px 5px 5px 5px;
+    padding: 10px;
+    border-radius: 20px;
+}
+
+.cool-hover {
+	display: inline-block;
+	background-image: linear-gradient(to right, transparent 50%, #846e3557 50%);
+	background-size: 200%;
+	transition: all 0.4s;
+}
+.cool-hover-active {
+	display: inline-block;
+	/* background-image: linear-gradient(to right, transparent 50%, #846e35 50%); */
+	background-size: 200%;
+	transition: all 0.4s;
+    background-color: #134e07;
+    border-radius: 20px;
+}
+
+.cool-hover-active :hover {
+	display: inline-block;
+	/* background-image: linear-gradient(to right, transparent 50%, #846e35 50%); */
+	background-size: 200%;
+	/* transition: all 0.4s; */
+    background-color: #134e07;
+    border-radius: 20px;
+}
+
+.cool-hover:hover {
+	background-position: -100%;
+    border-radius: 20px;
+}
+
+
+.icon-group{
+	position: relative;
+	left: 20px;
+	top: 30px;
+	
+}
+
+.horoscope-content {
+	padding: 50px;
+	line-height: 180%;
+	font-size: 22px;
+}
+
+.icon-group p {
+	position: relative;
+	left: 15px;
+}
