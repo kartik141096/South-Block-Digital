@@ -8,9 +8,9 @@
                         <i class="fas fa-bolt text-white"></i>
                     </span>
                     <div class="pe-2 me-3 border-end border-white d-flex align-items-center">
-                        <p class="mb-0 text-white fs-6 fw-normal">Trending</p>
+                        <p class="mb-0 text-white fs-6 fw-normal">Breaking News</p>
                     </div>
-                    <div class="overflow-hidden" style="width: 735px;">
+                    <div class="overflow-hidden" style="width: 850px;">
                         <div id="note" class="ps-2">
                             <img src="./../assets/img/features-fashion.jpg" class="img-fluid rounded-circle border border-3 border-primary me-2" style="width: 30px; height: 30px;" alt="">
                             <a href="#"><p class="text-white mb-0 link-hover">Newsan unknown printer took a galley of type andscrambled Newsan.</p></a>
@@ -18,7 +18,8 @@
                     </div>
                 </div>
                 <div class="top-link flex-lg-wrap">
-                    <i class="fas fa-calendar-alt text-white border-end border-secondary pe-2 me-2"> <span class="text-body"> Tuesday, Sep 12, 2024</span></i>
+                    <!-- <i class="fas fa-calendar-alt text-white border-end border-secondary pe-2 me-2"> <span class="text-body"> Tuesday, Sep 12, 2024</span></i> -->
+
                     <div class="d-flex icon">
                         <p class="mb-0 text-white me-2">Follow Us:</p>
                         <a href="" class="me-2"><i class="fab fa-facebook-f text-body link-hover"></i></a>
@@ -39,7 +40,7 @@
                 <a href="index.html" class="navbar-brand">
                     <!-- <p class="text-primary display-6 mb-2" style="line-height: 0;">Newsers</p>
                     <small class="text-body fw-normal" style="letter-spacing: 12px;">Nespaper</small> -->
-                    <img src="./../../../assets/img/logo.png" alt="South Block Digital" height="80">
+                    <img src="./../../../assets/img/logo.png" alt="South Block Digital" height="70">
                 </a>
                 <button class="navbar-toggler py-2 px-3" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
                     <span class="fa fa-bars text-primary"></span>
@@ -64,10 +65,10 @@
                         <div class="d-flex">
                             <img src="./../assets/img/weather-icon.png" class="img-fluid w-100 me-2" alt="">
                             <div class="d-flex align-items-center">
-                                <strong class="fs-4 text-secondary">31°C</strong>
+                                <strong class="fs-4 text-secondary">{{this.weather.temp}}°C</strong>
                                 <div class="d-flex flex-column ms-2" style="width: 150px;">
-                                    <span class="text-body">NEW YORK,</span>
-                                    <small>Mon. 10 jun 2024</small>
+                                    <span class="text-body">{{this.weather.location}}</span>
+                                    <small>{{this.weather.date}}</small>
                                 </div>
                             </div>
                         </div>

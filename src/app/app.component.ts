@@ -3,14 +3,22 @@ import { CommonModule } from '@angular/common';
 import { RouterOutlet } from '@angular/router';
 import { HeaderComponent } from './common/header/header.component';
 import { FooterComponent } from './common/footer/footer.component';
+import { HttpClientModule } from '@angular/common/http';
+
 import 'owl.carousel';
 
 @Component({
-  selector: 'app-root',
-  standalone: true,
-  imports: [CommonModule, RouterOutlet, HeaderComponent, FooterComponent],
-  templateUrl: './app.component.html',
-  styleUrl: './app.component.css'
+    selector: 'app-root',
+    standalone: true,
+    imports: [
+        CommonModule, 
+        RouterOutlet, 
+        HeaderComponent, 
+        FooterComponent, 
+        HttpClientModule
+    ],
+    templateUrl: './app.component.html',
+    styleUrl: './app.component.css'
 })
 export class AppComponent {
   title = 'SBD_Front';
