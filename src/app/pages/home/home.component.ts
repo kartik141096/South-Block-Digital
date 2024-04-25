@@ -1,14 +1,46 @@
 import { Component } from '@angular/core';
+import { ApiService } from '../../api.service';
+import { CommonModule } from '@angular/common';
+
+interface news {
+  id: string;
+  category_id: string;
+  heading: string;
+  paragraph: string;
+  img: string;
+  is_active: string;
+  is_deleted: string;
+  created_by: string;
+  created_at: string;
+  slaves: string[][];
+}
 
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [],
+  imports: [CommonModule],
   templateUrl: './home.component.html',
   styleUrl: './home.component.css'
 })
 export class HomeComponent {
 
+  constructor(protected ApiService: ApiService) {}
+
+  news_data:news[] = [];
+
+  ngOnInit(): void {
+
+    this.ApiService.get_news_list().subscribe(data => {
+      // console.log(data);
+      this.news_data = data;
+      console.log(this.news_data[0].id);
+    }, error => {
+      console.error(error);
+    });
+
+
+  }
+  
   ngAfterViewInit() {
 
     $(document).ready(() => {
