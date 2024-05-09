@@ -37,7 +37,6 @@ export class HeaderComponent {
     this.ApiService.get_category().subscribe(data => {
       
       this.category_data = data;
-      console.log(this.category_data);
     }, error => {
       console.error(error);
     });

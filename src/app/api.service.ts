@@ -7,7 +7,6 @@ import { Observable } from 'rxjs';
 })
 export class ApiService {
 
-  private weather_api_url = 'http://api.weatherapi.com/v1/current.json?key=497bbe3effae4d6799050929241804&q=dehradun';
   private backend_api_url = 'http://127.0.0.1:8000/api/';
 
   constructor(private http: HttpClient) { }
@@ -26,6 +25,7 @@ export class ApiService {
   {
     return this.http.get<any>(this.backend_api_url+'get-news-list');
   }
+
 
 
 

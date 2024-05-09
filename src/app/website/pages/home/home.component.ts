@@ -31,9 +31,8 @@ export class HomeComponent {
   ngOnInit(): void {
 
     this.ApiService.get_news_list().subscribe(data => {
-      // console.log(data);
       this.news_data = data;
-      console.log(this.news_data[0].id);
+      // console.log(this.news_data[0].id);
     }, error => {
       console.error(error);
     });
