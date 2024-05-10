@@ -1,9 +1,11 @@
 import { Routes } from '@angular/router';
+import { AuthGuard } from '../auth.guard';
 import { AdminComponent } from './admin.component';
 import { LoginComponent } from './pages/login/login.component';
 import { DashboardComponent } from './pages/dashboard/dashboard.component';
-import { AuthGuard } from '../auth.guard';
+import { CategoryComponent } from './pages/category/category.component';
 
+// import { NewsDetailsComponent } from '../website/pages/news-details/news-details.component';
 
 export const adminRoutes: Routes = [
     {
@@ -17,13 +19,24 @@ export const adminRoutes: Routes = [
             },
             {
                 path:'login',
-                component:LoginComponent
+                component:LoginComponent,
+                canActivate: [AuthGuard]
             },
             {
                 path:'dashboard',
                 component:DashboardComponent,
-                canActivate: [AuthGuard] 
-            }
+                canActivate: [AuthGuard]
+            },
+            {
+                path:'category',
+                component:CategoryComponent,
+                canActivate: [AuthGuard]
+            },
+            // {
+            //     path:'news',
+            //     component:NewsDetailsComponent,
+            //     canActivate: [AuthGuard]
+            // },
         ]
     }
 ];

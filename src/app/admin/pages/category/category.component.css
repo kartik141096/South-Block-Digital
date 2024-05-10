@@ -6,6 +6,4 @@
 @import './../../../../admin_assets/js/select.dataTables.min.css';
 @import './../../../../admin_assets/css/vertical-layout-light/style.css';
 
-.weather-date{
-    float: right;
-}
+.pointer {cursor: pointer;}

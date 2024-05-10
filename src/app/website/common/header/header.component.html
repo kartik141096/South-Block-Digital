@@ -48,21 +48,24 @@
                         
 
 
-                        <div *ngFor="let category of category_data; let i = index">
-                            <ng-container *ngIf="category.slaves.length == 0; else dropdown">
-                                <a href="{{category.category_name}}" class="nav-item nav-link"><strong>{{ category.category_name }}</strong></a>
-                            </ng-container>
-                            <ng-template #dropdown>
+                        <div *ngFor="let categoryArray of category_data">
+                            <div *ngFor="let categoryElement of categoryArray">
+                              <ng-container *ngIf="categoryElement.slaves.length === 0; else dropdown">
+                                <a [routerLink]="[categoryElement.category_name]" class="nav-item nav-link"><strong>{{ categoryElement.category_name }}</strong></a>
+                              </ng-container>
+                              <ng-template #dropdown>
                                 <div class="nav-item dropdown">
-                                    <a href="{{category.category_name}}" class="nav-link dropdown-toggle" data-bs-toggle="dropdown"><strong>{{ category.category_name }}</strong></a>
-                                    <div class="dropdown-menu m-0 bg-secondary rounded-0">
-                                        <ng-container *ngFor="let slaveArray of category.slaves">
-                                            <a *ngFor="let slave of slaveArray" href="{{ slave }}" class="dropdown-item">{{ slave }}</a>
-                                        </ng-container>
-                                    </div>
+                                  <a [routerLink]="[categoryElement.category_name]" class="nav-link dropdown-toggle" data-bs-toggle="dropdown"><strong>{{ categoryElement.category_name }}</strong></a>
+                                  <div class="dropdown-menu m-0 bg-secondary rounded-0">
+                                    <ng-container *ngFor="let slave of categoryElement.slaves">
+                                      <a [routerLink]="[slave.subcategory_name]" class="dropdown-item">{{ slave.subcategory_name }}</a>
+                                    </ng-container>
+                                  </div>
                                 </div>
-                            </ng-template>
-                        </div>
+                              </ng-template>
+                            </div>
+                          </div>
+                          
                         
 
 
@@ -87,7 +90,6 @@
     </div>
   </div>
   <!-- Navbar End -->
-  
   
   <!-- Modal Search Start -->
   <div class="modal fade" id="searchModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
