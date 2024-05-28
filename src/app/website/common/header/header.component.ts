@@ -1,16 +1,26 @@
 import { Component } from '@angular/core';
 import { ApiService } from '../../../api.service';
 import { CommonModule } from '@angular/common';
+import { RouterModule } from '@angular/router';
 
-interface Category {
+
+export interface Category {
   category_name: string;
-  slaves: string[][];
+  is_active: string;
+  is_parent:number;
+  slaves: Subcategory[];
 }
+
+export interface Subcategory {
+  subcategory_name: string[];
+  is_active: string[];
+}
+
 
 @Component({
   selector: 'app-header',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, RouterModule],
   templateUrl: './header.component.html',
   styleUrl: './header.component.css'
 })
@@ -20,7 +30,7 @@ export class HeaderComponent {
   constructor(protected ApiService: ApiService) {}
   
   weather: { temp: number, location:string, date:string, icon:string } = { temp: 0, location:'', date:'', icon:'' };
-  category_data:Category[] = [];
+  category_data:Category[][] = [];
 
   ngOnInit(): void {
 
@@ -35,7 +45,7 @@ export class HeaderComponent {
     });
 
     this.ApiService.get_category().subscribe(data => {
-      
+      console.log(data)
       this.category_data = data;
     }, error => {
       console.error(error);

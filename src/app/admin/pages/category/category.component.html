@@ -1,0 +1,110 @@
+<div class="container-scroller">
+
+    <app-header></app-header>
+
+    <div class="container-fluid page-body-wrapper">
+
+      <app-sidebar></app-sidebar>
+
+      <div class="main-panel">
+        <div class="content-wrapper">
+          <div class="row">
+
+            <div class="col-lg-12 grid-margin stretch-card">
+                <div class="card">
+                  <div class="card-body">
+                    <h4 class="card-title">Manage Category</h4>
+                    <div style="float: right;">
+                        <button (click)="popup()" class="btn btn-primary mr-3"><strong>+</strong> Add Category</button>
+                        <!-- <button class="btn btn-success"><strong>✓ </strong> Update Category</button> -->
+                    </div>  
+                    <div class="table-responsive">
+                      <table class="table table-striped">
+                        <thead>
+                          <tr>
+                            <th>Category ID</th>
+                            <th>Category name</th>
+                            <th>Sub-Category name</th>
+                            <th>Is Active</th>
+                            <th>Update</th>
+                            <th>Delete</th>
+                          </tr>
+                        </thead>
+
+                        <tbody>
+                          <ng-container *ngFor="let categoryElement of category_data; let i = index">
+                            <tr class="table">
+                              <td>{{ i + 1 }}</td>
+                              <td>{{ categoryElement[0].category_name }}</td>
+                              <td *ngIf="categoryElement[0].slaves.length > 0; else elsepart">
+                                <div *ngFor="let slave of categoryElement[0]?.slaves">
+                                  <div>{{ slave.subcategory_name }}</div>
+                                </div>
+                              </td>
+                              <ng-template #elsepart>
+                                <td>----------</td>
+                              </ng-template>
+                              <td>
+                                <div class="form-check form-check-info">
+                                  <div class="form-check-label">
+                                    <!-- <input type="checkbox" [(ngModel)]="checkboxValues[i]" (click)="is_active(categoryElement[0].category_id, i)" [checked]="categoryElement[0].is_active === '1'" class="form-check-input btn-success" > -->
+                                    <input type="checkbox" [checked]="categoryElement[0].is_active === 1" (click)="is_active(categoryElement[0].category_id)" class="form-check-input btn-success">
+                                    <i class="input-helper"></i>
+                                  </div>
+                                </div>
+                              </td>
+                              <td>
+                                <!-- <a class="pointer" routerLink="/admin/manage-category/"><img src="./../../../../assets/img/admin/common/update.png" alt=""></a> -->
+                                <a class="pointer" [routerLink]="['/admin/manage-category/', categoryElement[0].category_id]"><img src="./../../../../assets/img/admin/common/update.png" alt=""></a>
+                              </td>
+                              <td>
+                                <a class="pointer" (click)="delete_category(categoryElement[0].category_id)"><img src="./../../../../assets/img/admin/common/delete.png" alt=""></a>
+                              </td>
+                            </tr>
+                          </ng-container>
+                        </tbody>
+                          
+                      </table>
+                    </div>
+                  </div>
+                </div>
+              </div>
+          </div>
+        </div>
+      </div>
+    </div>   
+  </div>
+
+  <div class="modal fade" id="inputPopup" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h4 class="modal-title" id="myModalLabel">Enter New Category Name</h4>
+        </div>
+        <div class="modal-body">
+          <form class="form-inline" >
+             <div class="form-group">
+               <div class="input-group">
+                 <input type="text" id="categoryName" class="form-control" placeholder="Category Name">
+               </div>
+             </div>
+             
+             <button type="button" (click)="addCategory()" class="ml-5 btn btn-primary" data-dismiss="modal">Create Category</button>
+           </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="./../../../../admin_assets/vendors/js/vendor.bundle.base.js"></script>
+  <!-- <script src="./../../../../admin_assets/vendors/chart.js/Chart.min.js"></script> -->
+  <script src="./../../../../admin_assets/vendors/datatables.net/jquery.dataTables.js"></script>
+  <script src="./../../../../admin_assets/vendors/datatables.net-bs4/dataTables.bootstrap4.js"></script>
+  <script src="./../../../../admin_assets/js/dataTables.select.min.js"></script>
+  <script src="./../../../../admin_assets/js/off-canvas.js"></script>
+  <script src="./../../../../admin_assets/js/hoverable-collapse.js"></script>
+  <script src="./../../../../admin_assets/js/template.js"></script>
+  <script src="./../../../../admin_assets/js/settings.js"></script>
+  <script src="./../../../../admin_assets/js/todolist.js"></script>
+  <script src="./../../../../admin_assets/js/dashboard.js"></script>
+  <!-- <script src="./../../../../admin_assets/js/Chart.roundedBarCharts.js"></script> -->

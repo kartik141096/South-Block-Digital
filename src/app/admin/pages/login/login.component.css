@@ -1,6 +1,21 @@
 @import './../../../../admin_assets/vendors/feather/feather.css';
 @import './../../../../admin_assets/vendors/ti-icons/css/themify-icons.css';
 @import './../../../../admin_assets/vendors/css/vendor.bundle.base.css';
-@import './../../../../admin_assets/vendors/datatables.net-bs4/dataTables.bootstrap4.css';
-@import './../../../../admin_assets/js/select.dataTables.min.css';
 @import './../../../../admin_assets/css/vertical-layout-light/style.css';
+
+
+
+.bg-img{
+    /* background-image: url("https://stories.uq.edu.au/contact-magazine/2020/future-of-news-media-abc-edition/assets/8DyLLuW0lg/uq-contact-future-of-media-headline-landscape-2560x1440.jpeg"), ; */
+    background-image: linear-gradient(rgba(255, 0, 0, 0.178), rgba(0, 26, 255, 0.315));
+    background-size: cover;
+    padding: 2.375rem 2.375rem;
+    width: 100%;
+    -webkit-flex-grow: 1;
+    flex-grow: 1;
+}
+
+.auth-form-red{
+    background: #ce1a3288;
+    border-radius: 20%;
+}
