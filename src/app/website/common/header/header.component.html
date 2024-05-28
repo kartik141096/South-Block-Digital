@@ -50,19 +50,23 @@
 
                         <div *ngFor="let categoryArray of category_data">
                             <div *ngFor="let categoryElement of categoryArray">
-                              <ng-container *ngIf="categoryElement.slaves.length === 0; else dropdown">
-                                <a [routerLink]="[categoryElement.category_name]" class="nav-item nav-link"><strong>{{ categoryElement.category_name }}</strong></a>
-                              </ng-container>
-                              <ng-template #dropdown>
-                                <div class="nav-item dropdown">
-                                  <a [routerLink]="[categoryElement.category_name]" class="nav-link dropdown-toggle" data-bs-toggle="dropdown"><strong>{{ categoryElement.category_name }}</strong></a>
-                                  <div class="dropdown-menu m-0 bg-secondary rounded-0">
-                                    <ng-container *ngFor="let slave of categoryElement.slaves">
-                                      <a [routerLink]="[slave.subcategory_name]" class="dropdown-item">{{ slave.subcategory_name }}</a>
-                                    </ng-container>
-                                  </div>
-                                </div>
-                              </ng-template>
+                              <div *ngIf="categoryElement.is_active">
+                                <ng-container *ngIf="categoryElement.slaves.length === 0 || categoryElement.is_parent == 0; else dropdown">
+                                    <a [routerLink]="[categoryElement.category_name]" class="nav-item nav-link"><strong>{{ categoryElement.category_name }}</strong></a>
+                                  </ng-container>
+                                  <ng-template #dropdown>
+                                    <div class="nav-item dropdown">
+                                      <a [routerLink]="[categoryElement.category_name]" class="nav-link dropdown-toggle" data-bs-toggle="dropdown"><strong>{{ categoryElement.category_name }}</strong></a>
+                                      <div class="dropdown-menu m-0 bg-secondary rounded-0">
+                                        <ng-container *ngFor="let slave of categoryElement.slaves">
+                                          <div *ngIf="slave.is_active">
+                                            <a [routerLink]="[slave.subcategory_name]" class="dropdown-item">{{ slave.subcategory_name }}</a>
+                                          </div>
+                                        </ng-container>
+                                      </div>
+                                    </div>
+                                  </ng-template>
+                              </div>
                             </div>
                           </div>
                           

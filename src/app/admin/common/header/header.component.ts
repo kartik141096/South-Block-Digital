@@ -17,4 +17,5 @@ export class HeaderComponent {
     this.authService.logout();
     this.router.navigate(['admin/login'] );
   }
+
 }

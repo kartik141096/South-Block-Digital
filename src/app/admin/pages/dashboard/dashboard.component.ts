@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Router } from '@angular/router';
-import { DataService } from '../../../data.service';
+// import { DataService } from '../../../data.service';
 import { AuthService } from '../../../auth.service';
 import { ApiService } from '../../../api.service';
 import { SidebarComponent } from '../../common/sidebar/sidebar.component';
@@ -36,7 +36,7 @@ export class DashboardComponent {
 
   weather: { temp: number, name:string, country:string, date:string, icon:string } = { temp: 0, name:'',country:'', date:'', icon:'' };
 
-  constructor(private route: ActivatedRoute, private dataService: DataService, private authService: AuthService, private router: Router, protected ApiService: ApiService) {
+  constructor(private route: ActivatedRoute, private authService: AuthService, private router: Router, protected ApiService: ApiService) {
     this.route.params.subscribe(params => {
 
       const userDataString = localStorage.getItem('user');

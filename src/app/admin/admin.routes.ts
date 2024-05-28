@@ -4,6 +4,7 @@ import { AdminComponent } from './admin.component';
 import { LoginComponent } from './pages/login/login.component';
 import { DashboardComponent } from './pages/dashboard/dashboard.component';
 import { CategoryComponent } from './pages/category/category.component';
+import { ManageCategoryComponent } from './pages/manage-category/manage-category.component';
 
 // import { NewsDetailsComponent } from '../website/pages/news-details/news-details.component';
 
@@ -32,11 +33,11 @@ export const adminRoutes: Routes = [
                 component:CategoryComponent,
                 canActivate: [AuthGuard]
             },
-            // {
-            //     path:'news',
-            //     component:NewsDetailsComponent,
-            //     canActivate: [AuthGuard]
-            // },
+            {
+                path:'manage-category/:id',
+                component:ManageCategoryComponent,
+                canActivate: [AuthGuard]
+            },
         ]
     }
 ];

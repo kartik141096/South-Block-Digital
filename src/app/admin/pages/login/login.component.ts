@@ -2,7 +2,6 @@ import { Component } from '@angular/core';
 import { AuthService } from '../../../auth.service';
 import { FormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
-import { DataService } from '../../../data.service';
 
 @Component({
   selector: 'app-login',
@@ -13,7 +12,7 @@ import { DataService } from '../../../data.service';
 })
 export class LoginComponent {
 
-  constructor(private authService: AuthService, private router: Router, private dataService: DataService) { }
+  constructor(private authService: AuthService, private router: Router) { }
 
   loginForm = {
     email: '',

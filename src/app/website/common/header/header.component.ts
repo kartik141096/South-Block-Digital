@@ -7,6 +7,7 @@ import { RouterModule } from '@angular/router';
 export interface Category {
   category_name: string;
   is_active: string;
+  is_parent:number;
   slaves: Subcategory[];
 }
 

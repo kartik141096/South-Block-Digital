@@ -1,0 +1,114 @@
+<div class="container-scroller">
+
+    <app-header></app-header>
+
+    <div class="container-fluid page-body-wrapper">
+
+      <app-sidebar></app-sidebar>
+
+      <div class="main-panel">
+        <div class="content-wrapper">
+          <div class="row">
+            
+            
+              <div class="col-md-12 grid-margin stretch-card">
+                <div class="card">
+                  <div class="card-body">
+                    <h4 class="card-title pb-3">Manage Category</h4>
+                    <p class="card-description">
+                      Category ID : {{categoryId+1}}
+                    </p>
+                    <form class="forms-sample">
+                        <div class="form-check form-check-info">
+                          <div class="form-check-label">
+                            <input type="checkbox" [checked]="category_data[categoryId][0].is_active === 1" (click)="is_active(category_data[categoryId][0].category_id)" class="form-check-input btn-success">
+                            <i class="input-helper"></i>Is Active
+                          </div>
+                        </div>
+                        <div class="form-check form-check-info">
+                          <div class="form-check-label">
+                            <input type="checkbox" [checked]="category_data[categoryId][0].is_parent === 1" (click)="is_parent(category_data[categoryId][0].category_id)" class="form-check-input btn-success">
+                            <i class="input-helper"></i>Is Parent
+                          </div>
+                        </div>
+                      <div class="form-group">
+                        <label for="exampleInputUsername1">Category Name</label>
+                        <input type="text" class="form-control" id="exampleInputUsername1" placeholder="Username" value="{{category_data[categoryId][0].category_name}}">
+                      </div>
+                      <a class="btn btn-danger mr-2" (click)="delete_category(category_data[categoryId][0].category_id)">Delete this Category</a>
+                    </form>
+                  </div>
+                </div>
+              </div>
+
+
+              <div class="col-md-9">
+                  <h2 class="card-title pb-3"><strong>Manage Sub Category</strong></h2>
+              </div>
+            <div class="col-md-3">
+                <a class="btn btn-primary mb-5 float-right" (click)="popup()"><strong>+</strong> Add Sub Category</a>
+            </div>
+            <div class="col-md-6" *ngFor="let slave of category_data[categoryId][0]?.slaves">
+              <div class="grid-margin stretch-card">
+                <div class="card">
+                  <div class="card-body">
+                    <form class="forms-sample" id="subcategory">
+                            
+                            <div class="form-check form-check-info">
+                                <div class="form-check-label">
+                                    <input type="checkbox" [checked]="slave.is_active === 1" (click)="is_active_subcategory(slave.subcategory_id)" class="form-check-input btn-success">
+                                    <i class="input-helper"></i>Is Active
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="exampleInputUsername1">Sub Category Name</label>
+                                <input type="text" class="form-control" id="exampleInputUsername1" placeholder="Username" value="{{ slave.subcategory_name }}">
+                            </div>
+                            <a class="btn btn-danger mr-2 mb-5" (click)="delete_sub_category(slave.subcategory_id, category_data[categoryId][0].category_id)">Delete this Sub Category</a>
+                            
+                        </form>
+                    </div>
+                </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>   
+  </div>
+
+  <div class="modal fade" id="inputPopup" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h4 class="modal-title" id="myModalLabel">Enter New Sub-Category Name</h4>
+        </div>
+        <div class="modal-body">
+          <form class="form-inline" >
+             <div class="form-group">
+               <div class="input-group">
+                 <input type="text" id="categoryName" class="form-control" placeholder="Category Name">
+               </div>
+             </div>
+             
+             <button type="button" (click)="addSubCategory()" class="ml-5 btn btn-primary" data-dismiss="modal">Create Category</button>
+           </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+
+
+  <script src="./../../../../admin_assets/vendors/js/vendor.bundle.base.js"></script>
+  <!-- <script src="./../../../../admin_assets/vendors/chart.js/Chart.min.js"></script> -->
+  <script src="./../../../../admin_assets/vendors/datatables.net/jquery.dataTables.js"></script>
+  <script src="./../../../../admin_assets/vendors/datatables.net-bs4/dataTables.bootstrap4.js"></script>
+  <script src="./../../../../admin_assets/js/dataTables.select.min.js"></script>
+  <script src="./../../../../admin_assets/js/off-canvas.js"></script>
+  <script src="./../../../../admin_assets/js/hoverable-collapse.js"></script>
+  <script src="./../../../../admin_assets/js/template.js"></script>
+  <script src="./../../../../admin_assets/js/settings.js"></script>
+  <script src="./../../../../admin_assets/js/todolist.js"></script>
+  <script src="./../../../../admin_assets/js/dashboard.js"></script>
+  <!-- <script src="./../../../../admin_assets/js/Chart.roundedBarCharts.js"></script> -->

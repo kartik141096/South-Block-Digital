@@ -15,7 +15,7 @@
                   <div class="card-body">
                     <h4 class="card-title">Manage Category</h4>
                     <div style="float: right;">
-                        <button class="btn btn-primary mr-3"><strong>+</strong> Add Category</button>
+                        <button (click)="popup()" class="btn btn-primary mr-3"><strong>+</strong> Add Category</button>
                         <!-- <button class="btn btn-success"><strong>✓ </strong> Update Category</button> -->
                     </div>  
                     <div class="table-responsive">
@@ -48,17 +48,17 @@
                                 <div class="form-check form-check-info">
                                   <div class="form-check-label">
                                     <!-- <input type="checkbox" [(ngModel)]="checkboxValues[i]" (click)="is_active(categoryElement[0].category_id, i)" [checked]="categoryElement[0].is_active === '1'" class="form-check-input btn-success" > -->
-                                    <input type="checkbox" [checked]="categoryElement[0].is_active === '1'" (click)="is_active(categoryElement[0].category_id, i)" class="form-check-input btn-success">
-                                    <!-- <input type="checkbox" [(ngModel)]="checkboxValues[i]" [checked]="categoryElement[0]?.is_active === '1'" class="form-check-input btn-success"> -->
+                                    <input type="checkbox" [checked]="categoryElement[0].is_active === 1" (click)="is_active(categoryElement[0].category_id)" class="form-check-input btn-success">
                                     <i class="input-helper"></i>
                                   </div>
                                 </div>
                               </td>
                               <td>
-                                <a class="pointer" (click)="update(categoryElement[0].category_id)"><img src="./../../../../assets/img/admin/common/update.png" alt=""></a>
+                                <!-- <a class="pointer" routerLink="/admin/manage-category/"><img src="./../../../../assets/img/admin/common/update.png" alt=""></a> -->
+                                <a class="pointer" [routerLink]="['/admin/manage-category/', categoryElement[0].category_id]"><img src="./../../../../assets/img/admin/common/update.png" alt=""></a>
                               </td>
                               <td>
-                                <a class="pointer" (click)="update(categoryElement[0].category_id)"><img src="./../../../../assets/img/admin/common/delete.png" alt=""></a>
+                                <a class="pointer" (click)="delete_category(categoryElement[0].category_id)"><img src="./../../../../assets/img/admin/common/delete.png" alt=""></a>
                               </td>
                             </tr>
                           </ng-container>
@@ -73,6 +73,27 @@
         </div>
       </div>
     </div>   
+  </div>
+
+  <div class="modal fade" id="inputPopup" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h4 class="modal-title" id="myModalLabel">Enter New Category Name</h4>
+        </div>
+        <div class="modal-body">
+          <form class="form-inline" >
+             <div class="form-group">
+               <div class="input-group">
+                 <input type="text" id="categoryName" class="form-control" placeholder="Category Name">
+               </div>
+             </div>
+             
+             <button type="button" (click)="addCategory()" class="ml-5 btn btn-primary" data-dismiss="modal">Create Category</button>
+           </form>
+        </div>
+      </div>
+    </div>
   </div>
 
   <script src="./../../../../admin_assets/vendors/js/vendor.bundle.base.js"></script>
