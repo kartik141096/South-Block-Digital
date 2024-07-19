@@ -1,0 +1,148 @@
+<div class="container-scroller">
+
+    <app-header></app-header>
+
+    <div class="container-fluid page-body-wrapper">
+
+        <app-sidebar></app-sidebar>
+
+        <div class="main-panel">
+            <div class="content-wrapper">
+
+                <div class="row">
+                    <div class="col-md-6">
+                        <h2>Add News</h2>
+                    </div>
+                    
+                    <div class="col-md-6">
+                        <!-- <a routerLink="/admin/save-news" style="float: right; padding:5px; padding-left: 50px; padding-right: 50px;" class="btn btn-success mr-3 mb-4">
+                            <img src="./../../../../assets/img/admin/common/save.png" height="30" alt="">    
+                            <strong class="ml-3 h3" style=" color:white;">Save</strong>
+                        </a> -->
+                        <button style="float: right; padding:5px; padding-left: 50px; padding-right: 50px;" class="btn btn-success mr-3 mb-4" (click)="saveNews()">
+                            <img src="./../../../../assets/img/admin/common/save.png" height="30" alt="">    
+                            <strong class="ml-3">Save</strong>
+                        </button>
+                    </div>
+                </div>
+                
+                <div class="row">
+                    <div class="col-md-12 grid-margin stretch-card">
+                        <div class="card">
+                            <div class="card-body">
+                                <h4 class="card-title pb-3">General Configuration</h4>
+
+                                <form class="forms-sample">
+                                    <div class="form-check form-check-info">
+                                        <div class="form-check-label">
+                                            <input type="checkbox" [checked]="true" id="is_active" class="form-check-input btn-success">
+                                            <i class="input-helper"></i>Is Active
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="form-group">
+                                        <label for="category">Category Name</label>
+                                        <p class="text-danger d-none" id="categoryError">Please select the category</p>
+                                        <select id="category">
+                                            <option value="0" selected disabled>Select</option>
+                                            <ng-container *ngFor="let categoryArray of category_data">
+                                                <ng-container *ngFor="let category of categoryArray">
+                                                    <ng-container *ngIf="category.is_parent && category.slaves.length > 0">
+                                                        <optgroup [label]="category.category_name" class="non-selectable">
+                                                            <option *ngFor="let subcategory of category.slaves" [value]="category.category_id+'-'+subcategory.subcategory_id">
+                                                                → {{ subcategory.subcategory_name }}
+                                                            </option>
+                                                        </optgroup>
+                                                    </ng-container>
+                                                    <ng-container *ngIf="!(category.is_parent && category.slaves.length > 0)">
+                                                        <ng-container *ngIf="category.category_name !== 'Home'">
+                                                            <option [value]="category.category_id+'-0'">
+                                                                {{ category.category_name }}
+                                                            </option>
+                                                        </ng-container>
+                                                    </ng-container>
+                                                </ng-container>
+                                            </ng-container>
+                                        </select>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="category">Select Tag</label>
+                                        <p class="text-danger d-none" id="tagsError">Please select the Tag</p>
+                                        <select id="tags">
+                                            <option value="0">Select Tag</option>
+                                            <ng-container *ngFor="let tagArray of news_tag">
+                                                <option value="{{tagArray.id}}">{{tagArray.name}}</option>
+                                            </ng-container>
+                                        </select>
+                                    </div>
+                                    <h4 class="card-title pb-2 pt-5">News Heading Section</h4>
+                                    <div class="form-group">
+                                        <label for="heading">Heading</label>
+                                        <p class="text-danger d-none" id="headingError">Heading is Important !!</p>
+                                        <input type="text" class="form-control" id="heading" placeholder="News - Heading">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="paragraph">paragraph</label>
+                                        <p class="text-danger d-none" id="paragraphError">Paragraph is Important !!</p>
+                                        <textarea class="form-control" name="paragraph" id="paragraph" rows="10"></textarea>
+                                    </div>
+                                    <div class="form-group">
+                                        <label>File upload</label>
+                                        <p class="text-danger d-none" id="imgError">Image is Important !!</p>
+                                        <div class="input-group col-xs-12">
+                                            <input type="text" #formControl class="form-control file-upload-info" disabled placeholder="Upload Image">
+                                            <span class="input-group-append">
+                                                <button class="btn btn-primary file-upload-browse" type="button" (click)="fileInput.click()">Upload</button>
+                                            </span><br>
+                                            <input #fileInput id="fileInput" type="file" style="display: none;" (change)="onFileSelect()">
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>    
+
+                    <div class="col-md-6 grid-margin stretch-card"  *ngFor="let index of countArray()">
+                        <div class="card">
+                            <div class="card-body">
+                                <h4 class="card-title">News Sub-Content</h4>
+                                <div class="form-group">
+                                    <label for="heading">Heading</label>
+                                    <input type="text" class="form-control" id="subHeading-{{index}}" placeholder="News - Heading">
+                                </div>
+                                <div class="form-group">
+                                    <label for="paragraph">paragraph</label>
+                                    <textarea class="form-control" name="paragraph" id="subParagraph-{{index}}" rows="10"></textarea>
+                                </div>
+                                <div class="form-group">
+                                    <label>File upload</label>
+                                    <div class="input-group col-xs-12">
+                                        <input type="text" [id]="'fileInput_' + index" class="form-control file-upload-info" disabled placeholder="Upload Image">
+                                        <span class="input-group-append">
+                                            <button class="btn btn-primary file-upload-browse" type="button" (click)="handleFileInput(index)">Upload</button>
+                                        </span>
+                                        <input type="file" [id]="'fileInput-' + index" style="display: none;" (change)="onFileSelected($event, index)">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-6 grid-margin stretch-card">
+                        <div class="card p-5 text-center">
+                            <div class="card-body">
+                                <a (click)="addMoreImages()">
+                                    <div class="box">
+                                        <h2><strong>+</strong></h2>
+                                        <h3>Add More Content</h3>
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <app-footer></app-footer>
+        </div>
+    </div>   
+  </div>

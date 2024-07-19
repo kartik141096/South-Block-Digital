@@ -55,9 +55,6 @@ export class ManageCategoryComponent {
 
   }
 
-
-
-
   is_active_subcategory(id: string) {
 
     const category_id = parseInt(id)-1;
@@ -198,16 +195,5 @@ export class ManageCategoryComponent {
         console.error('Category not found');
     }
   }
-
-
-
-
-
-
-
-
-
-
-
 
 }

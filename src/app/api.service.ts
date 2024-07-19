@@ -44,9 +44,35 @@ export class ApiService {
   }
   
   // News APIs ================================================================================================================================================
+  
+  // add_news(data: any)
+  // {
+  //   return this.http.post<any>(this.backend_api_url+'add-news',data);
+  // }
+
+  add_news(data: FormData) {
+    return this.http.post<any>(this.backend_api_url + 'add-news', data, {
+        headers: {
+            'enctype': 'multipart/form-data'
+        }
+    });
+  }
+  
   get_news_list()
   {
     return this.http.get<any>(this.backend_api_url+'get-news-list');
+  }
+  
+  filter_news(data:{})
+  {
+    return this.http.post<any>(this.backend_api_url+'filter-news',data);
+  }
+
+
+  // News Tags =================================================================================================================================================
+  get_news_tags()
+  {
+    return this.http.get<any>(this.backend_api_url+'get-news-tags');
   }
   
 

@@ -1,0 +1,58 @@
+@import './../../../../admin_assets/vendors/feather/feather.css';
+@import './../../../../admin_assets/vendors/ti-icons/css/themify-icons.css';
+@import './../../../../admin_assets/vendors/css/vendor.bundle.base.css';
+@import './../../../../admin_assets/vendors/datatables.net-bs4/dataTables.bootstrap4.css';
+@import './../../../../admin_assets/vendors/ti-icons/css/themify-icons.css';
+@import './../../../../admin_assets/js/select.dataTables.min.css';
+@import './../../../../admin_assets/css/vertical-layout-light/style.css';
+
+.weather-date{
+    float: right;
+}
+
+.weather-date{
+    float: right;
+}
+
+select {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+  }
+  
+  select optgroup.non-selectable {
+    color: rgb(193, 206, 12);
+    font-weight: bold;
+    pointer-events: none;
+    background-color: #5a5a5a;
+  }
+  
+  select optgroup.non-selectable:hover {
+    cursor: not-allowed;
+  }
+  
+  select option {
+    color: black;
+    background-color: white;
+  }
+  
+  select optgroup option {
+    color:rgb(121, 129, 0);
+    background-color: #cacaca;
+    padding-left: 20px; /* Indent subcategories */
+  }
+  
+  select optgroup.non-selectable {
+    pointer-events: none; /* Makes optgroup non-selectable */
+  }
+  
+  select optgroup.non-selectable:hover {
+    cursor: default;
+  }
+
+  .box{
+    border: 1px solid black;
+    padding-top:160px;
+    padding-bottom:160px;
+  }

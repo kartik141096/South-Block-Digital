@@ -6,11 +6,13 @@ import { AuthService } from '../../../auth.service';
 import { ApiService } from '../../../api.service';
 import { SidebarComponent } from '../../common/sidebar/sidebar.component';
 import { HeaderComponent } from '../../common/header/header.component';
+import { FooterComponent } from '../../common/footer/footer.component';
+
 
 @Component({
   selector: 'app-dashboard',
   standalone: true,
-  imports: [SidebarComponent, HeaderComponent],
+  imports: [SidebarComponent, HeaderComponent, FooterComponent],
   templateUrl: './dashboard.component.html',
   styleUrl: './dashboard.component.css'
 })

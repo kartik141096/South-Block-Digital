@@ -1,0 +1,75 @@
+<div class="container-scroller">
+
+    <app-header></app-header>
+
+    <div class="container-fluid page-body-wrapper">
+
+        <app-sidebar></app-sidebar>
+
+        <div class="main-panel">
+            <div class="content-wrapper">
+                <h2>News</h2>
+                <div style="float: right;">
+                    <a routerLink="/admin/add-news" class="btn btn-primary mr-3"><strong>+</strong> Add News</a>
+                </div>
+                <div class="row">
+
+                    <div class="col-md-6 pt-5">
+                        <h6><strong>Category Wise News</strong></h6>
+                        <select (change)="filter()" id="category">
+                            <option value="0">All News</option>
+                            <ng-container *ngFor="let categoryArray of category_data">
+                                <ng-container *ngFor="let category of categoryArray">
+                                    <ng-container *ngIf="category.is_parent && category.slaves.length > 0">
+                                        <optgroup [label]="category.category_name" class="non-selectable">
+                                            <option *ngFor="let subcategory of category.slaves" [value]="category.category_id+'-'+subcategory.subcategory_id">
+                                                → {{ subcategory.subcategory_name }}
+                                            </option>
+                                        </optgroup>
+                                    </ng-container>
+                                    <ng-container *ngIf="!(category.is_parent && category.slaves.length > 0)">
+                                        <ng-container *ngIf="category.category_name !== 'Home'">
+                                            <option [value]="category.category_id+'-0'">
+                                                {{ category.category_name }}
+                                            </option>
+                                        </ng-container>
+                                    </ng-container>
+                                </ng-container>
+                            </ng-container>
+                        </select>
+                    </div>
+
+                    <div class="col-md-6 pt-5">
+                        <h6><strong>Select Tag</strong></h6>
+                        <select (change)="filter()" id="tags">
+                            <option value="0">Select Tag</option>
+                            <ng-container *ngFor="let tagArray of news_tag">
+                                <option value="{{tagArray.id}}">{{tagArray.name}}</option>
+                            </ng-container>
+                        </select>
+                    </div>
+
+                </div>
+                
+                <div class="row">
+
+                    <ng-container *ngFor="let newsElement of news_list;">
+                        <div class="col-md-2 mt-5 grid-margin grid-margin-md-0 stretch-card">
+                            <a href="#">
+                                <div class="card">
+                                    <div class="card-body">
+                                        <img src="{{newsElement.img}}" height="100" alt="">
+                                        <h4 class="card-title mt-3 lh-base">{{newsElement.heading}}</h4>
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+                    </ng-container>
+
+                </div>
+            </div>
+
+            <app-footer></app-footer>
+        </div>
+    </div>   
+  </div>
